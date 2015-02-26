@@ -23,14 +23,14 @@ function manualChangeImage(index) {
     $('#theImage').attr('src', images[currentImg]);
 }
 
-//    when 1 or 3 keys are pressed   1: previous image,   3: next image
+//    when LEFT and RIGHT keys are pressed   LEFT: previous image,   RIGHT: next image
 function keyPressFunc(e) {
-//    if NUM 1 clicked
+//    if LEFT is clicked
     if (e.which == 37 || e.keyCode == 37) {
         manualChangeImage(--index);
     }
 
-//    if NUM 3 clicked
+//    if RIGHT is clicked
     if (e.which == 39 || e.keyCode == 39) {
         manualChangeImage(++index);
     }
@@ -41,7 +41,7 @@ $(document).ready(function() {
 
     var timerImg = null;
 
-//    when any a link hovered
+//    when any image link is hovered
     $("a").mouseover(function() {
         if (timerImg) { clearInterval(timerImg); }
         switch ($(this).attr("name")) {
@@ -55,7 +55,7 @@ $(document).ready(function() {
         }
     });
 
-//    when play btn clicked
+//    when play btn is clicked
     $("#btn_play").click(function() {
         if (timerImg) { clearInterval(timerImg); }
         timerImg = setInterval (autoChangeImage, 300);
