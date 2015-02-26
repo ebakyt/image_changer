@@ -24,16 +24,19 @@ function manualChangeImage(index) {
 }
 
 //    when 1 or 3 keys are pressed   1: previous image,   3: next image
-function keyPressFunc(e) {
-//    if NUM 1 clicked
-    if (e.which == 37 || e.keyCode == 37) {
-        manualChangeImage(--index);
-    }
+function keyPressFunc(KeyEvent e) {
+		int keyCode = e.getKeyCode();
+    switch( keyCode ) { 
+        case KeyEvent.VK_LEFT:
+            // handle left
+            manualChangeImage(--index);
+            break;
+        case KeyEvent.VK_RIGHT :
+            // handle right
+            manualChangeImage(++index);
+            break;
+     }
 
-//    if NUM 3 clicked
-    if (e.which == 39 || e.keyCode == 39) {
-        manualChangeImage(++index);
-    }
 }
 
 
