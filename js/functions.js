@@ -36,6 +36,7 @@ function keyPressFunc(e) {
     }
 }
 
+// Sanjar was here. :)
 
 $(document).ready(function() {
 
