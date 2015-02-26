@@ -24,8 +24,11 @@ function rotateImage() {
 
 $(document).ready(function() {
 
+    var timerImg = null;
+
 //    when any a link hovered
     $("a").mouseover(function() {
+        if (timerImg) { clearInterval(timerImg); }
         switch ($(this).attr("name")) {
             case "test1": $("#myImage").attr("src", images[0]); break;
             case "test2": $("#myImage").attr("src", images[1]); break;
@@ -39,7 +42,8 @@ $(document).ready(function() {
 
 //    when play btn clicked
     $("#btn_play").click(function() {
-        setInterval (rotateImage, 300);
+        if (timerImg) { clearInterval(timerImg); }
+        timerImg = setInterval (rotateImage, 300);
     });
 
 });
