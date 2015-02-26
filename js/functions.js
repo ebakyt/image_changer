@@ -26,12 +26,12 @@ function manualChangeImage(index) {
 //    when 1 or 3 keys are pressed   1: previous image,   3: next image
 function keyPressFunc(e) {
 //    if NUM 1 clicked
-    if (e.which == 49 || e.keyCode == 49) {
+    if (e.which == 37 || e.keyCode == 37) {
         manualChangeImage(--index);
     }
 
 //    if NUM 3 clicked
-    if (e.which == 51 || e.keyCode == 51) {
+    if (e.which == 39 || e.keyCode == 39) {
         manualChangeImage(++index);
     }
 }
