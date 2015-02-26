@@ -11,13 +11,28 @@ var images = new Array ('images/img1.jpg',
                         'images/img6.jpg',
                         'images/img7.jpg');
 
-var index = 1;
+var index = 0;
 function autoChangeImage() {
-    $('#theImage').attr('src', images[index]);
-    if (index == images.length-1) {
-        index = 0;
-    } else {
-        index++;
+    var currentImg = index % (images.length);
+    $('#theImage').attr('src', images[currentImg]);
+    index++;
+}
+
+function manualChangeImage(index) {
+    var currentImg = index % (images.length);
+    $('#theImage').attr('src', images[currentImg]);
+}
+
+//    when 1 or 3 keys are pressed   1: previous image,   3: next image
+function keyPressFunc(e) {
+//    if NUM 1 clicked
+    if (e.which == 49 || e.keyCode == 49) {
+        manualChangeImage(--index);
+    }
+
+//    if NUM 3 clicked
+    if (e.which == 51 || e.keyCode == 51) {
+        manualChangeImage(++index);
     }
 }
 
@@ -30,13 +45,13 @@ $(document).ready(function() {
     $("a").mouseover(function() {
         if (timerImg) { clearInterval(timerImg); }
         switch ($(this).attr("name")) {
-            case "test1": $("#theImage").attr("src", images[0]); break;
-            case "test2": $("#theImage").attr("src", images[1]); break;
-            case "test3": $("#theImage").attr("src", images[2]); break;
-            case "test4": $("#theImage").attr("src", images[3]); break;
-            case "test5": $("#theImage").attr("src", images[4]); break;
-            case "test6": $("#theImage").attr("src", images[5]); break;
-            case "test7": $("#theImage").attr("src", images[6]); break;
+            case "test1": index=0; manualChangeImage(index); break;
+            case "test2": index=1; manualChangeImage(index); break;
+            case "test3": index=2; manualChangeImage(index); break;
+            case "test4": index=3; manualChangeImage(index); break;
+            case "test5": index=4; manualChangeImage(index); break;
+            case "test6": index=5; manualChangeImage(index); break;
+            case "test7": index=6; manualChangeImage(index); break;
         }
     });
 
@@ -45,8 +60,5 @@ $(document).ready(function() {
         if (timerImg) { clearInterval(timerImg); }
         timerImg = setInterval (autoChangeImage, 300);
     });
-
 });
-
-
 
