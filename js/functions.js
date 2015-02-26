@@ -11,12 +11,22 @@ var images = new Array ('images/img1.jpg',
                         'images/img6.jpg',
                         'images/img7.jpg');
 
-$(document).ready(function()
-{
-    $("a").mouseover(function(){
+var index = 1;
+function rotateImage() {
+    $('#myImage').attr('src', images[index]);
+    if (index == images.length-1) {
+        index = 0;
+    } else {
+        index++;
+    }
+}
 
-        switch ($(this).attr("name"))
-        {
+
+$(document).ready(function() {
+
+//    when any a link hovered
+    $("a").mouseover(function() {
+        switch ($(this).attr("name")) {
             case "test1": $("#myImage").attr("src", images[0]); break;
             case "test2": $("#myImage").attr("src", images[1]); break;
             case "test3": $("#myImage").attr("src", images[2]); break;
@@ -26,6 +36,12 @@ $(document).ready(function()
             case "test7": $("#myImage").attr("src", images[6]); break;
         }
     });
+
+//    when play btn clicked
+    $("#btn_play").click(function() {
+        setInterval (rotateImage, 300);
+    });
+
 });
 
 
